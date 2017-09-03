@@ -1,5 +1,5 @@
 # Proyecto final del [curso de Python Darwin Eventur](http://www.darwineventur.com/2017/06/python-para-la-ingenieria-y-la-ciencia-online.html)
-Este es simplemente el repositorio en el que voy a ir colgando todo mi trabajo final del curso ya que quería aprovechar para hacerlo usando `git` y así también practicar con eso.
+Este es simplemente el repositorio en el que voy a ir colgando todo mi trabajo final del curso ya que quería aprovechar para hacerlo usando `git` y así también practicar con ello.
 
 ## Descripción
 El proyecto consiste en diseñar un pequeño gestor de bibliotecas. Se trata de un programa que permita agregar libros a una colección, listarlos, modificarlos y quitarlos de ella.
