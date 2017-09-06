@@ -4,6 +4,15 @@
 # Voy a empezar por crear una biblioteca de ejemplo
 biblioteca = []
 
+def haz_numero(i):
+    """Comprueba si lo recibido es un número, transfórmalo si es y pide otro si no."""
+    while type(i) != int:
+        try:
+            i = int(i)
+        except ValueError:
+            i = input("Debe introducir un número: ")
+    return i
+
 def crea_libro(titulo, autor, editorial, anno_publicacion = None): # Por hacer: implementar campos adicionales, como el del año.
     """Crea la estructura necesaria (un diccionario) para almacenar un libro en la biblioteca."""
     return {"Título": titulo, "Autor": autor, "Editorial": editorial}
@@ -40,6 +49,12 @@ def agrega_libro():
     
     biblioteca.append(crea_libro(titulo, autor, editorial))
 
-agrega_libro()
+def borra_libro(): # TODO: Controlar que no se salga del rango positivo de la lista y permitir cancelar (por ejemplo introduciendo -1)
+    """Interactúa con el usuario para permitirle borrar un libro de la biblioteca."""
+    i = input("Introduzca el índice que numera el libro que desee borrar: ")
+    i = haz_numero(i)
+    biblioteca.pop(i)
+
+borra_libro()
 
 muestra_repertorio()
