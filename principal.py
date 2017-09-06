@@ -24,8 +24,9 @@ fundacion.append(crea_libro("Segunda Fundación", "Isaac Asimov", "Cenit"))
 
 biblioteca = biblioteca + hp + fundacion
 
-for libro in biblioteca:
-    print(libro)
+def muestra_repertorio():
+    for i in range(len(biblioteca)):
+        libro = biblioteca[i]
+        print(str(i) + ". " + libro["Título"] + ", " + libro["Autor"] + ", " + libro["Editorial"] + ".")
 
-#def muestra_repertorio():
-    
+muestra_repertorio()
