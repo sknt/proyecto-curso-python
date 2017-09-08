@@ -6,7 +6,7 @@ Por favor, ten en cuenta que el repositorio original [está en BitBucket](https:
 ## Descripción
 El proyecto consiste en diseñar un pequeño gestor de bibliotecas. Se trata de un programa que permita agregar libros a una colección, listarlos, modificarlos y quitarlos de ella.
 
-### Requisitos mínimos
+### Requisitos mínimos (v0.1)
 Al iniciar el programa, este debe permitir elegir una acción de entre las siguientes:
 
 -   Mostrar lista.
