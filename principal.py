@@ -6,13 +6,20 @@ numero_obligatorio = "Debe introducir un número: " # Usada cuando el usuario de
 in_titulo = "Introduzca el título del libro: "
 in_autor = "Introduzca el nombre del autor: "
 in_editorial = "Introduzca el nombre de la editorial: "
+in_nuevo = "Introduzca el nuevo campo: "
 
-in_indice = "Introduzca el índice que numera el libro que desee " # Usada cuando se le pide al usuario el número que corresponde a un libro al que se le quiera hacer alguna acción (ver las cadenas siguientes)
+in_indice = "Introduzca el índice que numera " # Usada cuando se le pide al usuario el número que corresponde a algo a lo que se le quiera hacer alguna acción (ver las cadenas siguientes)
+# Objetos
+in_libro = "el libro "
+in_campo = "el campo "
+# Común
+in_desee = "que desee "
+# Acciones
 in_borrar = "borrar: "
 in_editar = "editar: "
 
 
-def haz_numero(i):
+def haz_numero(i): # TODO: Controlar también que no se salga del rango positivo de la lista correspondiente y permitir cancelar funciones de alguna manera (por ejemplo introduciendo -1)
     """Comprueba si lo recibido es un número, transfórmalo si es y pide otro si no."""
     while type(i) != int:
         try:
@@ -21,9 +28,11 @@ def haz_numero(i):
             i = input(numero_obligatorio)
     return i
 
-def crea_libro(titulo, autor, editorial, anno_publicacion = None): # TODO: implementar campos adicionales, como el del año.
+def crea_libro(titulo, autor, editorial, anno_publicacion = None):
     """Crea la estructura necesaria (un diccionario) para almacenar un libro en la biblioteca."""
     return {"Título": titulo, "Autor": autor, "Editorial": editorial}
+
+lista_campos = ["Título", "Autor", "Editorial"]
 
 
 
@@ -68,15 +77,26 @@ def agrega_libro():
     
     biblioteca.append(crea_libro(titulo, autor, editorial))
 
-def borra_libro(): # TODO: Controlar que no se salga del rango positivo de la lista y permitir cancelar (por ejemplo introduciendo -1)
+def borra_libro():
     """Interactúa con el usuario para permitirle borrar un libro de la biblioteca."""
-    i = input(in_indice + in_borrar)
+    i = input(in_indice + in_libro + in_desee + in_borrar)
     i = haz_numero(i)
     biblioteca.pop(i)
 
-borra_libro()
+#borra_libro()
+
+#muestra_repertorio()
+
+def edita_libro():
+    """Interactúa con el usuario para permitirle editar un libro de la biblioteca."""
+    i = input(in_indice + in_libro + in_desee + in_editar) # El usuario elige qué libro quiere editar
+    i = haz_numero(i)
+    for ii, campo in enumerate(lista_campos):
+        print(str(ii) + ". " + campo + ": " + biblioteca[i][campo] + ".")
+    iii = input(in_indice + in_campo + in_desee + in_editar) # El usuario elige qué campo quiere editar del libro elegido
+    iii = haz_numero(iii)
+    biblioteca[i][lista_campos[iii]] = input(in_nuevo)
+
+edita_libro()
 
 muestra_repertorio()
-
-#def edita_libro():
-    #i = input(in_indice + in_editar)
