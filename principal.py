@@ -2,6 +2,7 @@
 #
 
 # Cadenas usadas
+campos = ["Título", "Autor", "Editorial"]
 in_numero = "Debe introducir un número: " # Usada cuando el usuario debía introducir un número y no lo hace
 in_titulo = "Introduzca el título del libro: "
 in_autor = "Introduzca el nombre del autor: "
@@ -32,11 +33,11 @@ def haz_numero(i): # TODO: Controlar también que no se salga del rango positivo
             i = input(in_numero)
     return i
 
-def crea_libro(titulo, autor, editorial, anno_publicacion = None):
+
+
+def crea_libro(titulo, autor, editorial):
     """Crea la estructura necesaria (un diccionario) para almacenar un libro en la biblioteca."""
     return {"Título": titulo, "Autor": autor, "Editorial": editorial}
-
-campos = ["Título", "Autor", "Editorial"]
 
 
 
@@ -71,6 +72,8 @@ def muestra_repertorio():
     for i, libro in enumerate(biblioteca):
         print(str(i) + ". " + libro["Título"] + ", " + libro["Autor"] + ", " + libro["Editorial"] + ".")
 
+
+
 def agrega_libro():
     """Interactúa con el usuario para permitirle agregar un libro a la biblioteca."""
     # Pide al usuario los datos necesarios
@@ -80,12 +83,16 @@ def agrega_libro():
     
     biblioteca.append(crea_libro(titulo, autor, editorial)) # Añade el libro a la biblioteca
 
+
+
 def borra_libro():
     """Interactúa con el usuario para permitirle borrar un libro de la biblioteca."""
     muestra_repertorio()
     i = input(in_indice + in_libro + in_desee + in_borrar) # Pregunta qué libro borrar
     i = haz_numero(i)
     biblioteca.pop(i) # Borra el libro
+
+
 
 def edita_libro():
     """Interactúa con el usuario para permitirle editar un libro de la biblioteca."""
@@ -102,6 +109,8 @@ def edita_libro():
     iii = haz_numero(iii)
     
     biblioteca[i][campos[iii]] = input(in_nuevo) # El usuario edita el campo
+
+
 
 def interactua():
     """Interactúa con el usuario para realizar todas las acciones."""
@@ -120,6 +129,8 @@ def interactua():
         borra_libro()
     elif i == 3:
         edita_libro()
+
+
 
 while True: # Ejecutamos el programa interactivo en bucle
     interactua()
