@@ -2,13 +2,12 @@
 #
 
 def haz_numero(i): # TODO: Controlar también que no se salga del rango positivo de la lista correspondiente y permitir cancelar funciones de alguna manera (por ejemplo introduciendo -1)
-    """Comprueba si lo recibido es un número, transfórmalo si lo es y vuelve a pedir uno si no."""
-    while type(i) != int:
-        try:
-            i = int(i)
-        except ValueError:
-            i = input(in_numero)
-    return i
+    """Comprueba si lo recibido es un número, transfórmalo si lo es y devuelve una cadena si no."""
+    try:
+        i = int(i)
+        return i
+    except ValueError:
+        return "No es un número"
 
 
 

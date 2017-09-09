@@ -27,6 +27,16 @@ acciones = "\n\n\nPuede realizar una de las siguientes acciones sobre la bibliot
 
 
 
+def comprueba_numero(i):
+    """Comprueba si lo introducido por el usuario es un número y, si no, pide otro."""
+    i = haz_numero(i) # Intenta convertirlo
+    while i == "No es un número": # Si no se puede convertir, pide otro hasta que se pueda
+        i = input(in_numero)
+        i = haz_numero(i)
+    return i
+
+
+
 def muestra_repertorio():
     """Muestra los libros que hay en la biblioteca."""
     for i, libro in enumerate(biblioteca):
@@ -49,7 +59,7 @@ def borra_libro():
     """Interactúa con el usuario para permitirle borrar un libro de la biblioteca."""
     muestra_repertorio()
     i = input(in_indice + in_libro + in_desee + in_borrar) # Pregunta qué libro borrar
-    i = haz_numero(i)
+    i = comprueba_numero(i)
     biblioteca.pop(i) # Borra el libro
 
 
@@ -59,14 +69,14 @@ def edita_libro():
     muestra_repertorio()
     
     i = input(in_indice + in_libro + in_desee + in_editar) # El usuario elige qué libro quiere editar
-    i = haz_numero(i)
+    i = comprueba_numero(i)
     
     print("")
     for ii, campo in enumerate(campos): # Muestra los campos del libro
         print(str(ii) + ". " + campo + ": " + biblioteca[i][campo] + ".")
     
     iii = input(in_indice + in_campo + in_desee + in_editar) # El usuario elige qué campo quiere editar del libro elegido
-    iii = haz_numero(iii)
+    iii = comprueba_numero(iii)
     
     biblioteca[i][campos[iii]] = input(in_nuevo) # El usuario edita el campo
 
@@ -77,7 +87,7 @@ def interactua():
     print(acciones) # Muestra las acciones
     i = input(in_indice + in_accion + in_desee + in_realizar) # Pregunta cuál es la que se quiere realizar
     print("\n\n\n")
-    i = haz_numero(i)
+    i = comprueba_numero(i)
     
     # Ejecuta la acción elegida
     if i == 0:
