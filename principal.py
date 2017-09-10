@@ -4,8 +4,8 @@
 from modulo import *
 
 # Cadenas usadas
-campos = ["Título", "Autor", "Editorial"]
 in_numero = "Debe introducir un número: " # Usada cuando el usuario debía introducir un número y no lo hace
+
 in_titulo = "Introduzca el título del libro: "
 in_autor = "Introduzca el nombre del autor: "
 in_editorial = "Introduzca el nombre de la editorial: "
@@ -29,17 +29,19 @@ acciones = "\n\n\nPuede realizar una de las siguientes acciones sobre la bibliot
 
 def comprueba_numero(i):
     """Comprueba si lo introducido por el usuario es un número y, si no, pide otro."""
-    i = haz_numero(i) # Intenta convertirlo
-    while i == "No es un número": # Si no se puede convertir, pide otro hasta que se pueda
+    while haz_numero(i) == "No es un número": # Si no se puede convertir, pide otro hasta que se pueda
         i = input(in_numero)
-        i = haz_numero(i)
-    return i
+    return haz_numero(i)
+
+
+
+biblioteca = Biblioteca() # Creamos la biblioteca
 
 
 
 def muestra_repertorio():
     """Muestra los libros que hay en la biblioteca."""
-    for i, libro in enumerate(biblioteca):
+    for i, libro in enumerate(biblioteca.libros):
         print(str(i) + ". " + libro["Título"] + ", " + libro["Autor"] + ", " + libro["Editorial"] + ".")
 
 
@@ -51,16 +53,18 @@ def agrega_libro():
     autor = input(in_autor)
     editorial = input(in_editorial)
     
-    biblioteca.append(crea_libro(titulo, autor, editorial)) # Añade el libro a la biblioteca
+    biblioteca.agrega_libro(titulo, autor, editorial) # Llama al método que añade el libro a la biblioteca
 
 
 
 def borra_libro():
     """Interactúa con el usuario para permitirle borrar un libro de la biblioteca."""
     muestra_repertorio()
+    
     i = input(in_indice + in_libro + in_desee + in_borrar) # Pregunta qué libro borrar
     i = comprueba_numero(i)
-    biblioteca.pop(i) # Borra el libro
+    
+    biblioteca.borra_libro(i) # Llama al método que borra el libro
 
 
 
@@ -71,14 +75,15 @@ def edita_libro():
     i = input(in_indice + in_libro + in_desee + in_editar) # El usuario elige qué libro quiere editar
     i = comprueba_numero(i)
     
+    # Muestra los campos del libro
     print("")
-    for ii, campo in enumerate(campos): # Muestra los campos del libro
-        print(str(ii) + ". " + campo + ": " + biblioteca[i][campo] + ".")
+    for ii, campo in enumerate(biblioteca.campos): 
+        print(str(ii) + ". " + campo + ": " + biblioteca.libros[i][campo] + ".")
     
     iii = input(in_indice + in_campo + in_desee + in_editar) # El usuario elige qué campo quiere editar del libro elegido
     iii = comprueba_numero(iii)
     
-    biblioteca[i][campos[iii]] = input(in_nuevo) # El usuario edita el campo
+    biblioteca.edita_libro(i, biblioteca.campos[iii], input(in_nuevo)) # Llama al método que edita el campo
 
 
 
