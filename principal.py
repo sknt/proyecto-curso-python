@@ -23,7 +23,9 @@ in_borrar = "borrar: "
 in_editar = "editar: "
 in_realizar = "realizar: "
 
-acciones = "\n\n\nPuede realizar una de las siguientes acciones sobre la biblioteca:\n\n0. Ver la lista de libros.\n1. Agregar un nuevo libro.\n2. Borrar un libro.\n3. Editar un libro." # Texto inicial de la función interactiva
+acciones = "\n\n\nPuede realizar una de las siguientes acciones sobre la biblioteca:\n\n0. Ver la lista de libros.\n1. Agregar un nuevo libro.\n2. Borrar un libro.\n3. Editar un libro.\n4. Guardar y salir." # Texto inicial de la función interactiva
+
+guardado_correcto = "Su biblioteca ha sido guardada correctamente. Pulse cualquier tecla para salir."
 
 
 
@@ -42,7 +44,7 @@ biblioteca = Biblioteca() # Creamos la biblioteca
 def muestra_repertorio():
     """Muestra los libros que hay en la biblioteca."""
     for i, libro in enumerate(biblioteca.libros):
-        print(str(i) + ". " + libro["Título"] + ", " + libro["Autor"] + ", " + libro["Editorial"] + ".")
+        print(str(i) + ". " + ", ".join(libro) + ".")
 
 
 
@@ -78,12 +80,12 @@ def edita_libro():
     # Muestra los campos del libro
     print("")
     for ii, campo in enumerate(biblioteca.campos): 
-        print(str(ii) + ". " + campo + ": " + biblioteca.libros[i][campo] + ".")
+        print(str(ii) + ". " + campo + ": " + biblioteca.libros[i][ii] + ".")
     
     iii = input(in_indice + in_campo + in_desee + in_editar) # El usuario elige qué campo quiere editar del libro elegido
     iii = comprueba_numero(iii)
     
-    biblioteca.edita_libro(i, biblioteca.campos[iii], input(in_nuevo)) # Llama al método que edita el campo
+    biblioteca.edita_libro(i, iii, input(in_nuevo)) # Llama al método que edita el campo
 
 
 
@@ -104,8 +106,13 @@ def interactua():
         borra_libro()
     elif i == 3:
         edita_libro()
+    elif i == 4:
+        biblioteca.guarda()
+        input(guardado_correcto)
+        return True
 
 
 
-while True: # Ejecutamos el programa interactivo en bucle
-    interactua()
+ejecuta = None
+while not ejecuta: # Ejecuta el programa interactivo en bucle hasta que se escoja guardar y salir
+    ejecuta = interactua()
