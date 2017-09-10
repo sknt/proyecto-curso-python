@@ -29,7 +29,7 @@ acciones = "\n\n\nPuede realizar una de las siguientes acciones sobre la bibliot
 
 def comprueba_numero(i):
     """Comprueba si lo introducido por el usuario es un número y, si no, pide otro."""
-    while haz_numero(i) == "No es un número": # Si no se puede convertir, pide otro hasta que se pueda
+    while haz_numero(i) == "No je pue": # Si no se puede convertir, pide otro hasta que se pueda
         i = input(in_numero)
     return haz_numero(i)
 
