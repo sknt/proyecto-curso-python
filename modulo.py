@@ -25,19 +25,9 @@ class Biblioteca: # Esta es la clase bibliotecas, cuyos métodos permiten gestio
     
     
     def __init__(self):
-        
-        # Para empezar, voy a meter dos sagas de libros.
-        self.agrega_libro("Harry Potter y la piedra filosofal", "J. K. Rowling", "Salamandra")
-        self.agrega_libro("Harry Potter y la cámara secreta", "J. K. Rowling", "Salamandra")
-        self.agrega_libro("Harry Potter y el prisionero de Azkaban", "J. K. Rowling", "Salamandra")
-        self.agrega_libro("Harry Potter y el cáliz de fuego", "J. K. Rowling", "Salamandra")
-        self.agrega_libro("Harry Potter y la Orden del Fénix", "J. K. Rowling", "Salamandra")
-        self.agrega_libro("Harry Potter y el misterio del príncipe", "J. K. Rowling", "Salamandra")
-        self.agrega_libro("Harry Potter y las Reliquias de la Muerte", "J. K. Rowling", "Salamandra")
-        
-        self.agrega_libro("Fundación", "Isaac Asimov", "Cenit")
-        self.agrega_libro("Fundación e Imperio", "Isaac Asimov", "Cenit")
-        self.agrega_libro("Segunda Fundación", "Isaac Asimov", "Cenit")
+        with open('biblioteca.csv', newline='') as f:
+            reader = csv.reader(f)
+            self.libros = list(reader)
     
     
     
