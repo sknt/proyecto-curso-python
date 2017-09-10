@@ -27,7 +27,7 @@ El código debe estar acompañado de comentarios explicando el uso de cada funci
 ### Posibles funcionalidades opcionales
 Se sugieren las siguientes ideas:
 
--   Las funciones del programa relacionadas con la operativa interna deberían estar en un módulo aparte, y las relacionadas con la interfaz en el cuerpo principal.
+-   Las funciones del programa relacionadas con la operativa interna deberían estar en un módulo aparte, y las relacionadas con la interfaz en el cuerpo principal. (v0.2)
 -   Guardar los datos de la biblioteca en un archivo (un CSV, por ejemplo) y cargarlos al inicio, para que se conserven entre una ejecución y otra.
 -   Control de errores (libros sin título, libros repetidos, etc.).
 -   Permitir búsquedas por autor y editorial.
