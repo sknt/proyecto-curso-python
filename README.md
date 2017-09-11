@@ -1,7 +1,7 @@
 # Proyecto final del [curso de Python Darwin Eventur](http://www.darwineventur.com/2017/06/python-para-la-ingenieria-y-la-ciencia-online.html)
 Este es simplemente el repositorio en el que voy a ir colgando todo mi trabajo final del curso ya que quería aprovechar para hacerlo usando `git` y así también practicar con ello.
 
-Por favor, ten en cuenta que el repositorio original [está en BitBucket](https://bitbucket.org/josealberto4444/proyecto-curso-python). Aunque intentaré mantener actualizada también esta copia en GitHub, no prometo nada.
+Por favor, ten en cuenta que el repositorio original es [el de BitBucket](https://bitbucket.org/josealberto4444/proyecto-curso-python). Aunque intentaré mantener actualizada también la copia en GitHub, no prometo nada.
 
 ## Descripción
 El proyecto consiste en diseñar un pequeño gestor de bibliotecas. Se trata de un programa que permita agregar libros a una colección, listarlos, modificarlos y quitarlos de ella.
